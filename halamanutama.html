@@ -334,4 +334,62 @@
         });
     }
 
-    
+    function sortPackages() {
+        const sortValue = document.getElementById('sortOptions').value;
+        const packages = Array.from(document.querySelectorAll('.package'));
+        
+        packages.sort((a, b) => {
+            const aData = JSON.parse(a.getAttribute('data-package'));
+            const bData = JSON.parse(b.getAttribute('data-package'));
+            
+            if (sortValue === 'priceAsc') {
+                return aData.price - bData.price;
+            } else if (sortValue === 'priceDesc') {
+                return bData.price - aData.price;
+            } else if (sortValue === 'rating') {
+                return bData.rating - aData.rating;
+            }
+            return 0;
+        });
+
+        const container = document.querySelector('.container');
+        packages.forEach(package => container.appendChild(package));
+    }
+
+    function submitFeedback() {
+        const feedbackText = document.getElementById('feedbackText').value;
+        if (feedbackText) {
+            feedbacks.push(feedbackText);
+            document.getElementById('feedbackText').value = "";
+            displayFeedbacks();
+        }
+    }
+
+    function displayFeedbacks() {
+        const feedbackList = document.getElementById('feedbackList');
+        feedbackList.innerHTML = feedbacks.map(feedback => `<div class="review">${feedback}</div>`).join('');
+    }
+
+    function confirmBooking() {
+        const title = document.getElementById('modalTitle').innerText;
+        const date = document.getElementById('bookingDate').value;
+        const participants = document.getElementById('numberOfParticipants').value;
+
+        if (date && participants) {
+            bookings.push({ title, date, participants });
+            updateBookingHistory();
+            closeModal();
+            alert('Pemesanan berhasil!');
+        } else {
+            alert('Silakan lengkapi informasi pemesanan!');
+        }
+    }
+
+    function updateBookingHistory() {
+        const bookingList = document.getElementById('bookingList');
+        bookingList.innerHTML = bookings.map(booking => `<li>${booking.title} - Tanggal: ${booking.date}, Jumlah: ${booking.participants}</li>`).join('');
+    }
+</script>
+
+</body>
+</html>
