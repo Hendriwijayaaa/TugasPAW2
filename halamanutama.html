@@ -102,3 +102,47 @@
 </head>
 <body>
 
+<header>
+    <h1>Aplikasi Pemesanan Paket Wisata</h1>
+</header>
+
+<div class="container">
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Cari paket wisata..." oninput="filterPackages()">
+        <select id="categoryFilter" onchange="filterPackages()">
+            <option value="">Semua Kategori</option>
+            <option value="Budaya">Budaya</option>
+            <option value="Alam">Alam</option>
+            <option value="Petualangan">Petualangan</option>
+            <option value="Relaksasi">Relaksasi</option>
+        </select>
+        <select id="sortOptions" onchange="sortPackages()">
+            <option value="">Urutkan berdasarkan</option>
+            <option value="priceAsc">Harga: Rendah ke Tinggi</option>
+            <option value="priceDesc">Harga: Tinggi ke Rendah</option>
+            <option value="rating">Rating</option>
+        </select>
+        <button onclick="filterPackages()">Cari</button>
+    </div>
+
+    <h2>Paket Wisata Tersedia</h2>
+
+    <div class="package" data-package='{"name": "Paket Wisata Bali", "price": 3500000, "duration": "5 Hari 4 Malam", "description": "Nikmati keindahan budaya Bali dan wisata sejarah.", "rating": 4.5, "category": "Budaya"}'>
+        <h2>Paket Wisata Bali</h2>
+        <p class="rating">Rating: ★★★★☆</p>
+        <p><strong>Harga:</strong> Rp 3.500.000</p>
+        <p><strong>Durasi:</strong> 5 Hari 4 Malam</p>
+        <p><strong>Deskripsi:</strong> Nikmati keindahan budaya Bali dan wisata sejarah.</p>
+        <button class="btn" onclick="openModal(this)">Pesan Sekarang</button>
+    </div>
+
+    <div class="package" data-package='{"name": "Paket Wisata Yogyakarta", "price": 2000000, "duration": "4 Hari 3 Malam", "description": "Menjelajahi keindahan Candi Borobudur dan Prambanan.", "rating": 4.7, "category": "Budaya"}'>
+        <h2>Paket Wisata Yogyakarta</h2>
+        <p class="rating">Rating: ★★★★☆</p>
+        <p><strong>Harga:</strong> Rp 2.000.000</p>
+        <p><strong>Durasi:</strong> 4 Hari 3 Malam</p>
+        <p><strong>Deskripsi:</strong> Menjelajahi keindahan Candi Borobudur dan Prambanan.</p>
+        <button class="btn" onclick="openModal(this)">Pesan Sekarang</button>
+    </div>
+
+    
