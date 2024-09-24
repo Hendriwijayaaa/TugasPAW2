@@ -91,3 +91,37 @@
     </div>
 </section>
 
+<section>
+    <h2>Formulir Pemesanan</h2>
+    <div class="form-container">
+        <form action="submit_pemesanan.php" method="post">
+            <label for="name">Nama Lengkap:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Nomor Telepon:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="package">Pilih Paket Wisata:</label>
+            <select id="package" name="package">
+                <option value="bali">Paket Wisata Bali</option>
+                <option value="lombok">Paket Wisata Lombok</option>
+                <option value="yogyakarta">Paket Wisata Yogyakarta</option>
+            </select>
+
+            <label for="date">Tanggal Keberangkatan:</label>
+            <input type="date" id="date" name="date" required>
+
+            <button type="submit">Pesan Sekarang</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Aplikasi Pemesanan Paket Wisata</p>
+</footer>
+
+</body>
+</html>
