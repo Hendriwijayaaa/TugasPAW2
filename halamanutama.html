@@ -269,4 +269,69 @@
         <div id="feedbackList"></div>
     </div>
 
+    <div class="testimonial-container">
+        <h2>Testimoni Pengguna</h2>
+        <div id="testimonialList">
+            <div class="review">"Paket wisata sangat memuaskan! Pelayanan yang luar biasa!" - Anna</div>
+            <div class="review">"Pengalaman tak terlupakan, terima kasih!" - Budi</div>
+            <div class="review">"Saya sangat merekomendasikan paket ini, sangat baik!" - Citra</div>
+            <div class="review">"Pengalaman luar biasa di Bali, pasti akan kembali!" - Dimas</div>
+        </div>
+    </div>
+
+    <div class="booking-history">
+        <h2>Riwayat Pemesanan</h2>
+        <ul id="bookingList"></ul>
+    </div>
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p><strong>Harga:</strong> <span id="modalPrice"></span></p>
+        <p><strong>Durasi:</strong> <span id="modalDuration"></span></p>
+        <p><strong>Deskripsi:</strong> <span id="modalDescription"></span></p>
+        <input type="date" class="input-date" id="bookingDate" placeholder="Tanggal Pemesanan">
+        <input type="number" class="input-number" id="numberOfParticipants" placeholder="Jumlah Peserta" min="1">
+        <button class="btn" onclick="confirmBooking()">Konfirmasi Pemesanan</button>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Pemesanan Paket Wisata</p>
+</footer>
+
+<script>
+    let feedbacks = [];
+    let bookings = [];
+
+    function openModal(button) {
+        const packageData = JSON.parse(button.parentElement.getAttribute('data-package'));
+        document.getElementById('modalTitle').innerText = packageData.name;
+        document.getElementById('modalPrice').innerText = packageData.price.toLocaleString();
+        document.getElementById('modalDuration').innerText = packageData.duration;
+        document.getElementById('modalDescription').innerText = packageData.description;
+        document.getElementById('myModal').style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById('myModal').style.display = "none";
+    }
+
+    function filterPackages() {
+        const searchValue = document.getElementById('search').value.toLowerCase();
+        const categoryValue = document.getElementById('categoryFilter').value.toLowerCase();
+        const packages = document.querySelectorAll('.package');
+        
+        packages.forEach(package => {
+            const packageName = package.querySelector('h2').innerText.toLowerCase();
+            const packageCategory = JSON.parse(package.getAttribute('data-package')).category.toLowerCase();
+            const matchesSearch = packageName.includes(searchValue);
+            const matchesCategory = categoryValue === "" || packageCategory === categoryValue;
+
+            package.style.display = matchesSearch && matchesCategory ? "block" : "none";
+        });
+    }
+
     
